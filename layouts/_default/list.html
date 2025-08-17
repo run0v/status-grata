@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="container">
+    <div class="list-page">
+        <header class="page-header">
+            <h1 class="page-title">{{ .Title }}</h1>
+            {{ if .Content }}
+            <div class="page-description">
+                {{ .Content }}
+            </div>
+            {{ end }}
+        </header>
+        
+        {{ if .Pages }}
+        <div class="articles-grid">
+            {{ range .Pages }}
+            <article class="article-card">
+                <h2 class="article-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                {{ if .Summary }}
+                <p class="article-summary">{{ .Summary }}</p>
+                {{ end }}
+                <div class="article-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "2 January 2006" }}
+                    </time>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="no-content">
+            <p>Пока нет опубликованных материалов.</p>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

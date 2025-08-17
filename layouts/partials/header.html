@@ -1,0 +1,40 @@
+<header class="site-header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <a href="{{ "/" | relURL }}">
+                    <div class="logo-placeholder">
+                        ЛОГОТИП
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="{{ "/" | relURL }}" class="nav-link {{ if .IsHome }}active{{ end }}">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "/about/" | relURL }}" class="nav-link {{ if eq .Section "about" }}active{{ end }}">О компании</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "/services/" | relURL }}" class="nav-link {{ if eq .Section "services" }}active{{ end }}">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "/blog/" | relURL }}" class="nav-link {{ if eq .Section "blog" }}active{{ end }}">Блог</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ "/contacts/" | relURL }}" class="nav-link {{ if eq .Section "contacts" }}active{{ end }}">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" aria-label="Открыть меню">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+</header>

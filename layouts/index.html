@@ -1,0 +1,97 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ .Site.Title }}</h1>
+            <p class="hero-subtitle">Профессиональные IT-решения для вашего бизнеса</p>
+            <div class="hero-actions">
+                <a href="#services" class="btn btn-primary">Наши услуги</a>
+                <a href="/contacts/" class="btn btn-secondary">Связаться с нами</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Наши услуги</h2>
+            <p class="section-subtitle">Комплексные решения для развития вашего бизнеса</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-placeholder">🌐</div>
+                </div>
+                <h3 class="service-title">Веб-разработка</h3>
+                <p class="service-description">Создание современных веб-сайтов и приложений с использованием передовых технологий</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-placeholder">📱</div>
+                </div>
+                <h3 class="service-title">Мобильные приложения</h3>
+                <p class="service-description">Разработка нативных и кроссплатформенных мобильных приложений для iOS и Android</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-placeholder">⚙️</div>
+                </div>
+                <h3 class="service-title">DevOps и инфраструктура</h3>
+                <p class="service-description">Настройка и поддержка серверной инфраструктуры, автоматизация процессов развертывания</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-placeholder">💡</div>
+                </div>
+                <h3 class="service-title">Консалтинг и поддержка</h3>
+                <p class="service-description">Техническое консультирование и круглосуточная поддержка ваших IT-решений</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles Section -->
+<section class="latest-articles">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Последние статьи</h2>
+            <p class="section-subtitle">Полезные материалы и новости из мира технологий</p>
+        </div>
+        
+        {{ $posts := where .Site.RegularPages "Section" "blog" }}
+        {{ if $posts }}
+        <div class="articles-grid">
+            {{ range first 3 $posts }}
+            <article class="article-card">
+                <h3 class="article-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                {{ if .Summary }}
+                <p class="article-summary">{{ .Summary }}</p>
+                {{ end }}
+                <div class="article-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "2 January 2006" }}
+                    </time>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        <div class="section-actions">
+            <a href="/blog/" class="btn btn-outline">Все статьи</a>
+        </div>
+        {{ else }}
+        <div class="no-articles">
+            <p>Скоро здесь появятся интересные статьи о технологиях и разработке.</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
